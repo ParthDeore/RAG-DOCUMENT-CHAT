@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-sans: "Inter", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper-50 text-ink-900 antialiased;
+}
+
+/* Custom scrollbar for the reading feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: theme("colors.paper.200");
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: theme("colors.ink.700" / 20%);
+}
+
+/* Focus states — visible, not decorative */
+:focus-visible {
+  outline: 2px solid theme("colors.gold.500");
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.prose-chat {
+  @apply text-[15px] leading-relaxed;
+}
+.prose-chat p {
+  @apply mb-3 last:mb-0;
+}
+.prose-chat ul,
+.prose-chat ol {
+  @apply mb-3 pl-5 space-y-1;
+}
+.prose-chat code {
+  @apply bg-paper-200 px-1.5 py-0.5 rounded text-[13px] font-mono;
+}
+.prose-chat pre {
+  @apply bg-ink-950 text-paper-50 p-3 rounded-lg overflow-x-auto mb-3 text-[13px];
+}
